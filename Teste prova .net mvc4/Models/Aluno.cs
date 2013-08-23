@@ -17,7 +17,7 @@ namespace Teste_prova.net_mvc4.Models
         [Required]
         public string Rg { get; set; }
         [Required]
-        public string DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
         public int Curso { get; set; }        
     }
 }

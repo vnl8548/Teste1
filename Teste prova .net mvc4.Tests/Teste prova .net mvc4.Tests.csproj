@@ -103,8 +103,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Modelo\Modelo\Modelo.csproj">
-      <Project>{7d94f680-e5be-405f-bedb-289752025d00}</Project>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{de2afbd5-c899-4abc-8a8e-24726d4659d6}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
     <ProjectReference Include="..\Persistencia\Persistencia.csproj">

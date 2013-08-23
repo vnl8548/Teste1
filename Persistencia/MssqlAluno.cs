@@ -64,7 +64,7 @@ namespace Persistencia
                 aluno.Cpf = (string) reader["cpf"];
                 aluno.Rg = (string) reader["rg"];
                 aluno.Curso = (int) reader["idCurso"];
-                aluno.DataNascimento = (String) reader["dataNascimento"];
+                aluno.DataNascimento = (DateTime) reader["dataNascimento"];
                 return aluno;
             }
             catch (Exception exception)
@@ -101,7 +101,7 @@ namespace Persistencia
                             Cpf =  (string)reader["cpf"],
                             Rg =  (string)reader["rg"],
                             Curso = (int) reader["idCurso"],
-                            DataNascimento = (String) reader["dataNascimento"]                            
+                            DataNascimento = (DateTime) reader["dataNascimento"]                            
                         };
                     lista.Add(aluno);
                 }
@@ -131,7 +131,7 @@ namespace Persistencia
             command.CommandText = ("DELETE from aluno WHERE " + filtro +" = "+ palavra);                        
             try
             {
-                command.ExecuteNonQuery();                
+                command.ExecuteNonQuery();  
                 return true;
             }
             catch (Exception exception)

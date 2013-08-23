@@ -25,9 +25,9 @@ namespace Teste_prova.net_mvc4.Tests.persistencia
             IDaoAluno dao = FactoryDao.GetDaoAluno();
             Aluno aluno = new Aluno()
                 {
-                    Nome = "joao",
-                    Cpf = "58495670",
-                    DataNascimento = "2010/10/10",
+                    Nome = "Ze",
+                    Cpf = "2013",
+                    DataNascimento = Convert.ToDateTime("10/10/1910"),
                     Rg = "30211404",
                     Curso = 2
                 };
@@ -38,7 +38,7 @@ namespace Teste_prova.net_mvc4.Tests.persistencia
         public void TestarDeletar()
         {
             IDaoAluno dao = FactoryDao.GetDaoAluno();
-            Assert.IsTrue(dao.Deletar("nome", "joao"));
+            Assert.IsTrue(dao.Deletar("2015", "cpf"));
         }
 
         [TestMethod]
@@ -46,8 +46,7 @@ namespace Teste_prova.net_mvc4.Tests.persistencia
         {
             IDaoAluno dao = FactoryDao.GetDaoAluno();
             Assert.IsNotNull(dao.Buscar("58495670", "cpf"));
-            Console.WriteLine(dao.Buscar("58495670", "cpf").DataNascimento);
-            Assert.AreEqual("58495670", dao.Buscar("58495670", "cpf").Cpf);
+            
         }
 
         [TestMethod]
@@ -63,13 +62,13 @@ namespace Teste_prova.net_mvc4.Tests.persistencia
             IDaoAluno dao = FactoryDao.GetDaoAluno();
             Aluno aluno = new Aluno()
             {
-                Nome = "joao",
-                Cpf = "58495670",
-                DataNascimento = "",
+                Nome = "ze",
+                Cpf = "2015",
+                DataNascimento = Convert.ToDateTime("10/10/1987"),
                 Rg = "30211404",
                 Curso = 3
             };
-            Assert.IsTrue(dao.Alterar(aluno, aluno.Cpf, "cpf"));
+            Assert.IsTrue(dao.Alterar(aluno, "2013", "cpf"));
         }
 
         [TestMethod]
