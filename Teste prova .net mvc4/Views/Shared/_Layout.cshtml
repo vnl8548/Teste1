@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+     <link href="~/assets/css/bootstrap.css" rel="stylesheet">
+    <title></title>
+</head>
+    <body>
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                    </a>
+                    <a class="brand" href="#">
+                        Prova Um
+                    </a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li>
+                                @Html.ActionLink("Home", "Index", "Home")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Cadastro", "Cadastro","Aluno")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Busca", "Busca","Aluno")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Alterar", "Alterar","Aluno")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Deletar", "Deletar","Aluno")
+                            </li>
+                        </ul>
+                    </div>
+                    <form class="navbar-form pull-right">
+                    </form>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+     
+ 
+    </body>
+</html>

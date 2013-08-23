@@ -1,0 +1,43 @@
+﻿@model Modelo.Aluno
+
+
+ 
+    <div class="container">
+      <div class="hero-unit">
+        <div>
+          <h1>
+            Cadastro Aluno
+          </h1>
+        </div>
+      </div>
+      <div class="well">
+        <h4>
+          Entre com os dados:
+        </h4>
+        @using (Html.BeginForm("Cadastro", "Aluno", FormMethod.Post))
+        {
+            <div class="control-group">
+            @Html.LabelFor(x => x.Nome)
+            @Html.EditorFor(x => x.Nome)
+          </div>
+          <div class="control-group">
+            @Html.LabelFor(x => x.Cpf)
+            @Html.EditorFor(x => x.Cpf)
+          </div>
+          <div class="control-group">
+            @Html.LabelFor(x => x.Rg)
+            @Html.EditorFor(x => x.Rg)
+          </div>
+          <div class="control-group">
+            @Html.LabelFor(x => x.DataNascimento)
+            @Html.EditorFor(x => x.DataNascimento)
+          </div>
+          <div class="control-group">
+            @Html.LabelFor(x => x.Curso)
+                      
+          </div>            
+            <input type="submit" value="Enviar" class="btn btn-primary btn-large"/>
+        }                              
+      </div>
+    </div>
+
