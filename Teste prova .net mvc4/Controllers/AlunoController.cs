@@ -51,22 +51,8 @@ namespace Teste_prova.net_mvc4.Controllers
                 JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
                 var novoJson = jsSerializer.Serialize( new  { 
                      Alunos = aluno                     
-                }).ToString();
-                return Json(novoJson);
-                /*return Json(new
-                {
-                    aluno = new []
-                    {
-                        new 
-                        {
-                            Nome = aluno.ElementAt(1).Nome,
-                            Cpf = aluno.ElementAt(1).Cpf,
-                            Rg = aluno.ElementAt(1).Rg,
-                            DtNasc = aluno.ElementAt(1).DataNascimento,
-                            Curso = aluno.ElementAt(1).Curso
-                        }
-                    }
-                });*/
+                });
+                return Json(novoJson);                
             }
             else {
                 return Json(null);

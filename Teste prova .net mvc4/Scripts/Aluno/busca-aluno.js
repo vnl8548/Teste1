@@ -50,7 +50,7 @@ var buscaAluno = {
             async: false,
             success: function (response) {
                 if (response != null) {
-                    alert("sucesso");
+                    alert("Busca concluida");
                     buscaAluno.preencheTabela(response);
                 }
                 else {
@@ -70,7 +70,6 @@ var buscaAluno = {
     preencheTabela: function (dados) {
         $('td').replaceWith('');
         var json = jQuery.parseJSON(dados);
-
         for (i = 0; i < json.Alunos.length; i++) {                        
             $('table').append('<tr>'
              +'           <td>'+json.Alunos[i].Id+'</td>'
