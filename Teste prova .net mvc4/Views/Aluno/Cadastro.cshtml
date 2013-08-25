@@ -1,5 +1,10 @@
-﻿@model Modelo.Aluno
+﻿@model ViewModel.Models.Aluno
 
+
+<script src="~/Scripts/Aluno/cadastro-aluno.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-2.0.3.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.mask.min.js" type="text/javascript"></script>
+ <body onload="inicio()">
 
  
     <div class="container">
@@ -14,30 +19,31 @@
         <h4>
           Entre com os dados:
         </h4>
-        @using (Html.BeginForm("Cadastro", "Aluno", FormMethod.Post))
-        {
+       
             <div class="control-group">
-            @Html.LabelFor(x => x.Nome)
-            @Html.EditorFor(x => x.Nome)
+            <label>Nome</label>
+            <input type="text" id="id-nome" value="@Model.Nome"/>
           </div>
           <div class="control-group">
-            @Html.LabelFor(x => x.Cpf)
-            @Html.EditorFor(x => x.Cpf)
+            <label>CPF</label>
+            <input type="text" id="id-cpf" maxlength="14" value="@Model.Cpf"/>
           </div>
           <div class="control-group">
-            @Html.LabelFor(x => x.Rg)
-            @Html.EditorFor(x => x.Rg)
+            <label>RG</label>
+           <input type="text" id="id-rg" value="@Model.Rg"/>
           </div>
           <div class="control-group">
-            @Html.LabelFor(x => x.DataNascimento)
-            @Html.EditorFor(x => x.DataNascimento)
+            <label>Data de Nascimento</label>
+            <input type="text" id="id-dtNasc" value="@Model.DataNascimento"/>
           </div>
           <div class="control-group">
-            @Html.LabelFor(x => x.Curso)
-                      
+            <label>Curso</label>
+            <select name="Nome do curso">
+                <option value="1" >Biologia</option>
+                <option value="2">Geografia</option>
+            </select>        
           </div>            
-            <input type="submit" value="Enviar" class="btn btn-primary btn-large"/>
-        }                              
+            <input type="submit" value="Enviar" id="bt-salvar" class="btn btn-primary btn-large"/>                           
       </div>
     </div>
-
+     </body>

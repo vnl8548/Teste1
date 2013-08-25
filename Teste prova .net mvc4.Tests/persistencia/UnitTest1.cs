@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Modelo;
+using ViewModel.Models;
 using Persistencia;
 
 
@@ -27,7 +27,7 @@ namespace Teste_prova.net_mvc4.Tests.persistencia
                 {
                     Nome = "Ze",
                     Cpf = "2013",
-                    DataNascimento = Convert.ToDateTime("10/10/1910"),
+                    DataNascimento = "10/10/1910",
                     Rg = "30211404",
                     Curso = 2
                 };
@@ -64,7 +64,7 @@ namespace Teste_prova.net_mvc4.Tests.persistencia
             {
                 Nome = "ze",
                 Cpf = "2015",
-                DataNascimento = Convert.ToDateTime("10/10/1987"),
+                DataNascimento = "10/10/1987",
                 Rg = "30211404",
                 Curso = 3
             };

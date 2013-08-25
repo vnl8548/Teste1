@@ -103,13 +103,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Modelo\Modelo.csproj">
-      <Project>{de2afbd5-c899-4abc-8a8e-24726d4659d6}</Project>
-      <Name>Modelo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Persistencia\Persistencia.csproj">
       <Project>{5eeaf830-033e-41c9-96ba-d34eb5cfab2e}</Project>
       <Name>Persistencia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{f66c4767-16e1-4b88-9321-aae2bfaa0536}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

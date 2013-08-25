@@ -5,7 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Modelo;
+using ViewModel.Models;
+
 
 
 namespace Persistencia
@@ -20,13 +21,14 @@ namespace Persistencia
                 {
                     Connection = conexao,
                     CommandText =
-                        ("INSERT into aluno(nome, cpf, rg, dataNascimento, idCurso) VALUES (@nome, @cpf, @rg, @dataNascimento, @idCurso );")
+                        ("INSERT into aluno(nome, cpf, rg, dataNascimento, idCurso ) VALUES (@nome, @cpf, @rg, @dataNascimento, @idCurso );")
                 };
+            Console.WriteLine(command);
             command.Parameters.AddWithValue("@nome", aluno.Nome);
             command.Parameters.AddWithValue("@cpf", aluno.Cpf);
-            command.Parameters.AddWithValue("@rg", aluno.Rg);            
-            command.Parameters.AddWithValue("@dataNascimento", Convert.ToDateTime(aluno.DataNascimento));
-            command.Parameters.AddWithValue("@idCurso ", aluno.Curso);            
+            command.Parameters.AddWithValue("@rg", aluno.Rg);
+            command.Parameters.AddWithValue("@dataNascimento", Convert.ToDateTime(aluno.DataNascimento)); 
+            command.Parameters.AddWithValue("@idCurso ", 2);            
             try
             {
                 command.ExecuteNonQuery();
@@ -64,7 +66,7 @@ namespace Persistencia
                 aluno.Cpf = (string) reader["cpf"];
                 aluno.Rg = (string) reader["rg"];
                 aluno.Curso = (int) reader["idCurso"];
-                aluno.DataNascimento = (DateTime) reader["dataNascimento"];
+                aluno.DataNascimento = (string)reader["dataNascimento"];
                 return aluno;
             }
             catch (Exception exception)
@@ -101,7 +103,7 @@ namespace Persistencia
                             Cpf =  (string)reader["cpf"],
                             Rg =  (string)reader["rg"],
                             Curso = (int) reader["idCurso"],
-                            DataNascimento = (DateTime) reader["dataNascimento"]                            
+                            DataNascimento = (string) reader["dataNascimento"]                            
                         };
                     lista.Add(aluno);
                 }

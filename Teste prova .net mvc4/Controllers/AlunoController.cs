@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Modelo;
-using Persistencia;
-
+using ViewModel.Models;
+using System.Web.Script.Serialization;
+using Servico.Servico;
 
 namespace Teste_prova.net_mvc4.Controllers
 {
@@ -15,23 +15,26 @@ namespace Teste_prova.net_mvc4.Controllers
 
         public ActionResult Cadastro()
         {
-            return View();
+            Aluno aluno = new Aluno
+            {
+                Nome = "seu nome",
+                Cpf = "",
+                Rg = "",
+                DataNascimento = System.DateTime.Now.ToString(),
+                Curso = 1
+            };
+            return View(aluno);
         }
 
-        [HttpPost]
-        public ActionResult Cadastro(Aluno aluno)
+        
+        public JsonResult Salvar(string dadosAluno, string dtNasc)
         {
-            IDaoAluno dao = FactoryDao.GetDaoAluno();
-            Aluno aluno1 = new Aluno()
-            {
-                Nome = aluno.Nome,
-                Cpf = aluno.Cpf,
-                DataNascimento = aluno.DataNascimento,
-                Rg = aluno.Rg,
-                Curso = 2
-            };                      
-            dao.Gravar(aluno1);            
-            return View(aluno);
+            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+            Aluno novoAluno = jsSerializer.Deserialize<Aluno>(dadosAluno);
+            novoAluno.DataNascimento = dtNasc;            
+            ServicoAluno servico = new ServicoAluno();            
+            servico.salvarAluno(novoAluno);
+            return Json(true);
         }
 
         public ActionResult Busca()
@@ -48,19 +51,7 @@ namespace Teste_prova.net_mvc4.Controllers
         {
 
             return View();
-        }
-
-        public ActionResult ListarPromocao(double longitude, double latitude)
-        {
-            return Json(new
-            {
-                IdEmpresa = 1,
-                NomeEmpresa = "Empresa00",
-                UrlEmpresa = "www.urlEmpresa/empresa.jpg",
-                UrlPromocao = "www.urlPropaganda/empresa.jpg",
-                Promocao = "Façalalalal"
-            });
-        }
+        }        
 
     }
 }
