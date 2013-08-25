@@ -24,5 +24,26 @@ namespace Servico.Servico
                 return false; 
             }
         }
+
+        public List<Aluno> buscarAluno(string palavra, string filtro) {
+            IDaoAluno dao = FactoryDao.GetDaoAluno();
+            try { 
+                List<Aluno> lista =
+                dao.Listar(palavra, filtro);
+                if (lista != null)
+                {
+                    return lista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception e){
+                Console.WriteLine(e.Message);
+            }
+
+            return null;
+        }
     }
 }

@@ -22,8 +22,7 @@ namespace Persistencia
                     Connection = conexao,
                     CommandText =
                         ("INSERT into aluno(nome, cpf, rg, dataNascimento, idCurso ) VALUES (@nome, @cpf, @rg, @dataNascimento, @idCurso );")
-                };
-            Console.WriteLine(command);
+                };            
             command.Parameters.AddWithValue("@nome", aluno.Nome);
             command.Parameters.AddWithValue("@cpf", aluno.Cpf);
             command.Parameters.AddWithValue("@rg", aluno.Rg);
@@ -57,6 +56,7 @@ namespace Persistencia
             SqlCommand command = new SqlCommand();
             command.Connection = conexao;
             command.CommandText = ("SELECT * from aluno WHERE " + filtro+ "= " + palavra);
+
             try
             {
                 SqlDataReader reader = command.ExecuteReader();
@@ -83,14 +83,18 @@ namespace Persistencia
             return null;
         }
 
-        public List<Aluno> Listar()
+        public List<Aluno> Listar(string palavra, string filtro)
         {            
             List<Aluno> lista = new List<Aluno>();
             SqlConnection conexao = new ConexaoBd().GetConnection();
             conexao.Open();
-            SqlCommand command = new SqlCommand();
-            command.Connection = conexao;
-            command.CommandText = ("SELECT * from aluno");
+            SqlCommand command = new SqlCommand { 
+                Connection = conexao,
+                CommandText = ("SELECT * from aluno WHERE " + filtro+ " LIKE @palavra")
+            };
+            //command.Parameters.AddWithValue("@filtro", filtro);
+            command.Parameters.AddWithValue("@palavra", String.Format("%{0}%", palavra));
+
             try
             {
                 SqlDataReader reader = command.ExecuteReader();
@@ -103,7 +107,7 @@ namespace Persistencia
                             Cpf =  (string)reader["cpf"],
                             Rg =  (string)reader["rg"],
                             Curso = (int) reader["idCurso"],
-                            DataNascimento = (string) reader["dataNascimento"]                            
+                            DataNascimento =  reader["dataNascimento"].ToString()                            
                         };
                     lista.Add(aluno);
                 }
@@ -111,7 +115,7 @@ namespace Persistencia
                 return lista;
             }
             catch (Exception exception)
-            {
+            {                
                 Console.WriteLine(exception.Message);
             }
             finally

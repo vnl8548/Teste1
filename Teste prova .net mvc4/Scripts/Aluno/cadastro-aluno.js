@@ -15,7 +15,9 @@ var cadastroAluno = {
 
     bind: function () {
         $('#bt-salvar').on("click", function () {
-            cadastroAluno.salvar();
+            if (cadastroAluno.valid() == true) {
+                cadastroAluno.salvar();
+            }
         })
     },
 
@@ -37,10 +39,11 @@ var cadastroAluno = {
     },
 
     valid: function () {        
-        var dados = this.recuperarDados();
-        var valido = true;        
+        var dados = cadastroAluno.recuperarDados();        
+        var valido = true;
+        
         if (dados.Nome.length < 5) {
-            alert("nome deve contem pelo menos 5 caracteres!");
+            alert("nome deve contem pelo menos 5 caracteres!");            
             valido = false;
         }
         if (dados.Cpf == "") { alert("cpf invalido"); valido = false; }
@@ -50,17 +53,16 @@ var cadastroAluno = {
         var ano = parseInt(dados.DtNasc.substring(6, 14));        
         if (dia < 0 || dia > 31) {
             alert("dia invalido!");
-            return false;
+            valido = false;
         }
         if (mes < 1 || mes > 12) {
             alert("mes invalido");
-            return false;
+            valido = false;
         }
         if (ano < 1910) {
             alert("ano invalido");
-            return false;
-        }
-        alert(""+valido);
+            valido = false;
+        }        
         return valido;
     },
 
